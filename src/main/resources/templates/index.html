@@ -21,7 +21,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Navbar</a>
+        <a class="navbar-brand" href="/">job4j_accidents</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -32,7 +32,29 @@
                 </li>
             </ul>
         </div>
-    </div>
 </nav>
+        <div class="container">
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Содержание</th>
+                        <th scope="col">Адрес</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="accident : ${accidents}">
+                        <td th:text="${accident.name}"/>
+                        <td th:text="${accident.text}"/>
+                        <td th:text="${accident.address}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
 </body>
 </html>
