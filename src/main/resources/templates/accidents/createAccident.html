@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
@@ -16,7 +16,7 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 
-    <title>Автомобильные инциденты</title>
+    <title>Автомобильные инцеденты</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -25,32 +25,36 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <a class="nav-item nav-link" th:href="@{/index}">Инциденты</a>
-                <a class="nav-item nav-link" th:href="@{/accidents/createAccident}">Добавить Инцидент</a>
+                <a class="nav-item nav-link active" th:href="@{/addAccident}">Добавить Инцидент</a>
             </ul>
         </div>
     </div>
 </nav>
-        <div class="container">
-            <div class="row">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Имя</th>
-                        <th scope="col">Содержание</th>
-                        <th scope="col">Адрес</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="accident : ${accidents}">
-                        <td th:text="${accident.name}"/>
-                        <td th:text="${accident.text}"/>
-                        <td th:text="${accident.address}"/>
-                    </tr>
-                    </tbody>
-                </table>
+<div class="container">
+    <div class="row pt-3">
+        <div class="card" style="width: 100%">
+            <div class="card-header">
+                Новый инцидент
+            </div>
+            <div class="card-body">
+                <form th:action="@{/accidents/saveAccident}" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" class="form-control" name="name" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="text">Содержание</label>
+                        <input type="text" class="form-control" name="text" id="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Адрес</label>
+                        <input type="text" class="form-control" name="address" id="address">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Сохранить</button>
+                </form>
             </div>
         </div>
     </div>
-
+</div>
 </body>
 </html>
