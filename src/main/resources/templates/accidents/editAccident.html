@@ -26,7 +26,6 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <a class="nav-item nav-link" href="/">Главная</a>
                 <a class="nav-item nav-link" th:href="@{/index}">Инциденты</a>
-                <a class="nav-item nav-link" th:href="@{/accidents/editAccident}">Редактировние Инцидента</a>
             </ul>
         </div>
     </div>
@@ -35,10 +34,11 @@
     <div class="row pt-3">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Новый инцидент
+                Редактирование инцидента
             </div>
             <div class="card-body">
                 <form th:action="@{/accidents/editAccident}" method="POST" th:object="${accident}" enctype="multipart/form-data">
+                    <input type="hidden" name="id" th:field="*{id}">
                     <div class="mb-3">
                         <label for="name" class="form-label">Название</label>
                         <input type="text" class="form-control" id="name" name="name" th:field="*{name}">

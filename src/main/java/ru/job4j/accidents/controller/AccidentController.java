@@ -24,15 +24,15 @@ public class AccidentController {
         return "redirect:/index";
     }
 
-    @GetMapping("/editAccident/{id}")
-    public String viewEditAccident(Model model, @RequestParam("id") int id) {
+    @GetMapping("/editAccident")
+    public String viewEditAccident(Model model, @RequestParam int id) {
         var accident = accidents.findById(id);
         if (accident.isEmpty()) {
             model.addAttribute("message", "Accident not found");
             return "/errors/404";
         }
         model.addAttribute("accident", accident.get());
-        return "/accidents/createAccident";
+        return "/accidents/editAccident";
     }
 
     @PostMapping("/editAccident")

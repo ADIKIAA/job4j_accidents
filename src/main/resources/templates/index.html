@@ -42,7 +42,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="accident : ${accidents}">
-                        <td th:text="${accident.name}"/>
+                        <td><a th:text="${accident.name}" th:href="@{|/accidents/editAccident?id=${accident.id}|}"</a></td>
                         <td th:text="${accident.text}"/>
                         <td th:text="${accident.address}"/>
                     </tr>
