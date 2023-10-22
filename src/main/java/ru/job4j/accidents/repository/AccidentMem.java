@@ -2,6 +2,7 @@ package ru.job4j.accidents.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Accident;
+import ru.job4j.accidents.model.AccidentType;
 
 import java.util.Collection;
 import java.util.Map;
@@ -17,7 +18,8 @@ public class AccidentMem {
     private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
 
     public AccidentMem() {
-        save(new Accident(0, "Авария", "Наезд на ограждение", "ул. Новая д.23"));
+        save(new Accident(0, "Авария", "Наезд на ограждение", "ул. Новая д.23",
+                new AccidentType(1, "Две машины")));
     }
 
     public Accident save(Accident accident) {
@@ -32,7 +34,8 @@ public class AccidentMem {
                 (id, oldAccident) -> new Accident(oldAccident.getId(),
                         accident.getName(),
                         accident.getText(),
-                        accident.getAddress())
+                        accident.getAddress(),
+                        accident.getType())
         ) != null;
     }
 
