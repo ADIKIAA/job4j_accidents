@@ -3,10 +3,9 @@ package ru.job4j.accidents.repository;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.AccidentType;
+import ru.job4j.accidents.model.Rule;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -19,7 +18,8 @@ public class AccidentMem {
 
     public AccidentMem() {
         save(new Accident(0, "Авария", "Наезд на ограждение", "ул. Новая д.23",
-                new AccidentType(1, "Две машины")));
+                new AccidentType(1, "Две машины"),
+                Set.of(new Rule(1, "Статья 1."))));
     }
 
     public Accident save(Accident accident) {
@@ -35,7 +35,8 @@ public class AccidentMem {
                         accident.getName(),
                         accident.getText(),
                         accident.getAddress(),
-                        accident.getType())
+                        accident.getType(),
+                        accident.getRules())
         ) != null;
     }
 
