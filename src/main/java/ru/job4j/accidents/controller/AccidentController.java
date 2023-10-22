@@ -38,8 +38,9 @@ public class AccidentController {
     @PostMapping("/editAccident")
     public String update(@ModelAttribute Accident accident, Model model) {
         boolean rsl = accidents.update(accident);
-        if (rsl) {
+        if (!rsl) {
             model.addAttribute("message", "Ошибка редактирования");
+            return "/errors/404";
         }
         return "redirect:/index";
     }
