@@ -37,6 +37,7 @@ public class AccidentController {
     @GetMapping("/editAccident")
     public String viewEditAccident(Model model, @RequestParam int id) {
         var accident = accidents.findById(id);
+        model.addAttribute("types", accidentTypeService.findAll());
         if (accident.isEmpty()) {
             model.addAttribute("message", "Accident not found");
             return "/errors/404";

@@ -51,6 +51,11 @@
                                     th:value="${type.id}"></option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="type.id" name="rIds">Статья</label>
+                        <br>
+                        <text th:text="${accident.rules}">
+                    </div>
                     <div class="mb-3">
                         <label for="text" class="form-label">Описание</label>
                         <input type="text" class="form-control" id="text" name="text" th:field="*{text}">
