@@ -1,4 +1,4 @@
-<body>
+<body xmlns:th="http://www.w3.org/1999/xhtml">
 <div class="container py-3">
     <main class="form-signin">
         <h1 class="h3 mb-3 fw-normal">Авторизация</h1>
@@ -15,8 +15,15 @@
                 <input type="password" class="form-control" id="password" name="password">
                 <label for="password">Password</label>
             </div>
+            <br>
             <hr class="my-4">
             <button type="submit" class="w-100 btn btn-lg btn-primary">Авторизация</button>
         </form>
+        <br>
+        <div class="checkbox mb-3">
+            <label>
+                <a th:href="@{/reg}">Зарегистрироваться</a>
+            </label>
+        </div>
     </main>
 </div>
