@@ -34,12 +34,12 @@ public class RegController {
         user.setEnabled(true);
         user.setPassword(encoder.encode(user.getPassword()));
         user.setAuthority(authorities.findByAuthority("ROLE_USER"));
-        var savedUser = userService.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-        if (savedUser.isPresent()) {
+        try {
+            users.save(user);
+        } catch (Exception e) {
             model.addAttribute("message", "Пользователь уже зарегистрирован");
             return "/reg";
         }
-        users.save(user);
         return "redirect:/login";
     }
 

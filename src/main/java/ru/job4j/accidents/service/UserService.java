@@ -30,8 +30,4 @@ public class UserService {
        return (Collection<User>) userRepository.findAll();
     }
 
-    public Optional<User> findByUsernameAndPassword(String username, String password)  {
-        return userRepository.findByUsernameAndPassword(username, password);
-    }
-
 }
