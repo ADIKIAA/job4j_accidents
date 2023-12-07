@@ -36,13 +36,13 @@ public class LoginController {
 
     @PostMapping("/login")
     public String loginUser(Model model, @ModelAttribute User user, HttpServletRequest request) {
-        var optionalUser = userService.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-        if (optionalUser.isEmpty()) {
+        var savedUser = userService.save(user);
+        if (savedUser == null) {
             model.addAttribute("errorMessage", "Почта или пароль введены неверно");
             return "login";
         }
         var session = request.getSession();
-        session.setAttribute("user", optionalUser.get());
+        session.setAttribute("user", savedUser);
         return "/index";
     }
 
